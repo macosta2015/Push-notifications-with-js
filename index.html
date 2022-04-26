@@ -16,8 +16,16 @@
 
     <script>
 // Seocnd part of the code
+
+        function showNotification(){
+            const notification = new Notification("New message from the computer!", {
+                body: "Hey we are testing the push notification"
+            });
+        }
+
         console.log(Notification.permission);
         if (Notification.permission === "granted") {
+            showNotification()
         alert("we have permission");
         } else if (Notification.permission !== "denied") {
         Notification.requestPermission().then(permission => {
@@ -25,23 +33,23 @@
         });
         }
 
-        console.log('second notification')
-        function createNotification(title, text, icon) {
-                const noti = new Notification(title, {
-                    body: text,
-                    icon
-                });
-            }
+        // console.log('second notification')
+        // function createNotification(title, text, icon) {
+        //         const noti = new Notification(title, {
+        //             body: text,
+        //             icon
+        //         });
+        //     }
 
-        console.log('third notification')
-        function showNotification() {
-        const notification = new Notification("New message incoming", {
-            body: "Hi there. How are you doing?"
-        })
-        notification.onclick = (e) => {
-            window.location.href = "https://google.com";
-            };
-        }
+        // console.log('third notification')
+        // function showNotification() {
+        // const notification = new Notification("New message incoming", {
+        //     body: "Hi there. How are you doing?"
+        // })
+        // notification.onclick = (e) => {
+        //     window.location.href = "https://google.com";
+        //     };
+        // }
     </script>
 
     
