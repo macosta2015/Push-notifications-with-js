@@ -7,54 +7,31 @@
     <title> push notifications</title>
 </head>
 <body>
-    <h1>Notification API</h1>
-    <h1>Eight time testing</h1>
+    <h1>Yahoo Finance API</h1>
+    <h1>Nine time testing</h1>
     <ul>
         <li>use JavaScript to display notification to the users</li>
         <li>only works in secure context (httos)</li>
     </ul>
 
     <script>
-// Seocnd part of the code
+const axios = require("axios");
 
-        console.log(Notification.permission);
-        if (Notification.permission === "granted") {
-            showNotification()
-            // alert("We have permission");
-            // showNotification()
-            // console.log("we have permission");
-        } else if (Notification.permission !== "denied") {
-            Notification.requestPermission().then(permission => {
-                if (permission === "granted"){
-                    showNotification();
-                }
-            });
-        }
+const options = {
+  method: 'GET',
+  url: 'https://yh-finance.p.rapidapi.com/news/v2/get-details',
+  params: {uuid: '9803606d-a324-3864-83a8-2bd621e6ccbd', region: 'US'},
+  headers: {
+    'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com',
+    'X-RapidAPI-Key': '6c37f3f275msh7913bbd983d34f5p1e0db5jsn3a74ed99c007'
+  }
+};
 
-
-        function showNotification(){
-            const notification = new Notification("New message from the computer!", {
-                body: "Hey we are testing the push notification"
-            });
-        }
-
-        // console.log('second notification')
-        // function createNotification(title, text, icon) {
-        //         const noti = new Notification(title, {
-        //             body: text,
-        //             icon
-        //         });
-        //     }
-
-        // console.log('third notification')
-        // function showNotification() {
-        // const notification = new Notification("New message incoming", {
-        //     body: "Hi there. How are you doing?"
-        // })
-        // notification.onclick = (e) => {
-        //     window.location.href = "https://google.com";
-        //     };
-        // }
+axios.request(options).then(function (response) {
+	console.log(response.data);
+}).catch(function (error) {
+	console.error(error);
+});
     </script>
 
     
