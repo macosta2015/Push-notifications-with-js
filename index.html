@@ -14,17 +14,8 @@
         <li>https://rapidapi.com/apininjas/api/currency-converter-by-api-ninjas/</li>
     </ul>
 
-    <h1>Authors</h1>
-    
-    <ul id="authors"></ul>
-
     <script>
-    
-    const ul = document.getElementById('authors');
-
-
-    
-    const options = {
+const options = {
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Host': 'currency-converter-by-api-ninjas.p.rapidapi.com',
@@ -32,24 +23,22 @@
 	}
 };
 
-    let pesosToDollar = 0;
-
-    function getPesosToDollar(pesos){
-        return pesos
-    }
-
-    let res = fetch('https://currency-converter-by-api-ninjas.p.rapidapi.com/v1/convertcurrency?have=USD&want=MXN&amount=1', options)
-	.then(response => response.json())
-	.then(response => {
-        // console.log(response.new_amount);
+function getCurrency() {
+    return fetch(
+        "https://currency-converter-by-api-ninjas.p.rapidapi.com/v1/convertcurrency?have=USD&want=MXN&amount=1",
+        options
+    );
+}
+getCurrency()
+    .then((response) => {
+        return response.json();
     })
-	.catch(err => console.error(err));
+    .then((data) => {
+        console.log(data.new_amount);
+    });
 
-    console.log('this is outside the fetch ')
-    console.log(res[0])
-
-
-
+    let valor = getCurrency()
+console.log('Hola: ' + valor)
 
     </script>
 
